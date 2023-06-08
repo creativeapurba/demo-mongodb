@@ -1,6 +1,10 @@
 const mongodb = require("mongodb").MongoClient
-const url = "mongodb://localhost:27017"
+const url = "mongodb://127.0.0.1:27017"
 const client = new mongodb(url);
-const localDB = client.db("local");
-const demoCollection = localDB.collection("demoCollection");
-console.log(demoCollection.find({}).toArray()); 
+const localDB = client.db("demoDB");
+const demoCollection = localDB.collection("user");
+demoCollection.find({}).toArray().then((res)=>{
+    console.log(res);
+}).catch((err)=>{
+    console.log(err);
+}); 
